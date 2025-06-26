@@ -1,29 +1,51 @@
-from main import *
+from dsa_math import *
 
 run_cases = [
-    ([1], 1),
-    ([1, 2, 3, 4, 5, 6, 7], 4),
-    ([12, 12, 12], 12),
-    ([], None),
+    ([7, 4, 3, 100, 765, 2344, 1, 2, 32], 5056),
+    ([12, 12, 12], 45),
+    ([10, 200, 3000, 5000, 4], 11333),
 ]
 
 submit_cases = run_cases + [
-    ([0], 0),
-    ([100, 200, 300, 400, 500], 300),
-    ([5, 10, 200, 3000, 5000], 1643),
-    ([12_345, 618_222, 58_832_221, 2_180_831_475, 8_663_863_102], 2_180_831_473),
+    ([], 0),
+    ([1, 1, 1], 4),
+    ([100], 100),
+    ([50, 60, 70, 80, 90], 483),
+    ([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 872),
+    (
+        [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40,
+            45,
+            50,
+            55,
+            60,
+            65,
+            70,
+            75,
+            80,
+            85,
+            90,
+            95,
+            100,
+        ],
+        1912,
+    ),
 ]
 
 
 def test(input1, expected_output):
     try:
         print("---------------------------------")
-        print(f"Inputs:")
-        print(f" * nums: {input1}")
+        print(f"Inputs: {input1}")
         print(f"Expecting: {expected_output}")
-        result = average_followers(input1)
-        if expected_output is not None:
-            result = int(result)
+        result = round(get_estimated_spread(input1))
         print(f"Actual: {result}")
         if result == expected_output:
             print("Pass")

@@ -1,51 +1,24 @@
-from main import *
+from dsa_math import *
 
-run_cases = [
-    ([7, 4, 3, 100, 765, 2344, 1, 2, 32], 5056),
-    ([12, 12, 12], 45),
-    ([10, 200, 3000, 5000, 4], 11333),
-]
+run_cases = [(40000, 0.3, 5), (43000, 0.1, 2), (100000, 0.6, 10)]
 
 submit_cases = run_cases + [
-    ([], 0),
-    ([1, 1, 1], 4),
-    ([100], 100),
-    ([50, 60, 70, 80, 90], 483),
-    ([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 872),
-    (
-        [
-            5,
-            10,
-            15,
-            20,
-            25,
-            30,
-            35,
-            40,
-            45,
-            50,
-            55,
-            60,
-            65,
-            70,
-            75,
-            80,
-            85,
-            90,
-            95,
-            100,
-        ],
-        1912,
-    ),
+    (1, 1, 0),
+    (200, 0.8, 6),
+    (300000, 0.5, 9),
+    (500000, 0.2, 4),
+    (750000, 0.7, 14),
 ]
 
 
-def test(input1, expected_output):
+def test(input1, input2, expected_output):
     try:
         print("---------------------------------")
-        print(f"Inputs: {input1}")
+        print(f"Inputs:")
+        print(f" * num_followers: {input1}")
+        print(f" * average_engagement_percentage: {input2}")
         print(f"Expecting: {expected_output}")
-        result = round(get_estimated_spread(input1))
+        result = round(get_influencer_score(input1, input2))
         print(f"Actual: {result}")
         if result == expected_output:
             print("Pass")

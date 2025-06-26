@@ -1,31 +1,31 @@
-from main import *
+from dsa_math import *
 
 run_cases = [
-    ([1, 10, 100, 1000], 10, [0.0, 1.0, 2.0, 3.0]),
-    ([1, 2, 4, 8], 2, [0.0, 1.0, 2.0, 3.0]),
+    ([1], 1),
+    ([1, 2, 3, 4, 5, 6, 7], 4),
+    ([12, 12, 12], 12),
+    ([], None),
 ]
 
 submit_cases = run_cases + [
-    ([2, 4, 8, 16], 2, [1.0, 2.0, 3.0, 4.0]),
-    ([3, 9, 27, 81], 3, [1.0, 2.0, 3.0, 4.0]),
-    ([5, 25, 125, 625], 5, [1.0, 2.0, 3.0, 4.0]),
-    ([10, 100, 1000, 10000], 10, [1.0, 2.0, 3.0, 4.0]),
-    ([20, 400, 8000, 160000], 20, [1.0, 2.0, 3.0, 4.0]),
+    ([0], 0),
+    ([100, 200, 300, 400, 500], 300),
+    ([5, 10, 200, 3000, 5000], 1643),
+    ([12_345, 618_222, 58_832_221, 2_180_831_475, 8_663_863_102], 2_180_831_473),
 ]
 
 
-def test(data, base, expected_output):
+def test(input1, expected_output):
     try:
         print("---------------------------------")
         print(f"Inputs:")
-        print(f" * data: {data}")
-        print(f" * base: {base}")
+        print(f" * nums: {input1}")
         print(f"Expecting: {expected_output}")
-        scaled_data = log_scale(data, base)
-        for i in range(0, len(scaled_data)):
-            scaled_data[i] = round(scaled_data[i], 2)
-        print(f"Actual: {scaled_data}")
-        if scaled_data == expected_output:
+        result = average_followers(input1)
+        if expected_output is not None:
+            result = int(result)
+        print(f"Actual: {result}")
+        if result == expected_output:
             print("Pass")
             return True
         print("Fail")
@@ -61,5 +61,4 @@ if "__RUN__" in globals():
     test_cases = run_cases
 
 main()
-
 

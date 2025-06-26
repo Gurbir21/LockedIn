@@ -1,26 +1,32 @@
-from main import *
+from dsa_math import *
 
-run_cases = [(40000, 0.3, 5), (43000, 0.1, 2), (100000, 0.6, 10)]
+
+run_cases = [
+    ([1, 10, 100, 1000], 10, [0.0, 1.0, 2.0, 3.0]),
+    ([1, 2, 4, 8], 2, [0.0, 1.0, 2.0, 3.0]),
+]
 
 submit_cases = run_cases + [
-    (1, 1, 0),
-    (200, 0.8, 6),
-    (300000, 0.5, 9),
-    (500000, 0.2, 4),
-    (750000, 0.7, 14),
+    ([2, 4, 8, 16], 2, [1.0, 2.0, 3.0, 4.0]),
+    ([3, 9, 27, 81], 3, [1.0, 2.0, 3.0, 4.0]),
+    ([5, 25, 125, 625], 5, [1.0, 2.0, 3.0, 4.0]),
+    ([10, 100, 1000, 10000], 10, [1.0, 2.0, 3.0, 4.0]),
+    ([20, 400, 8000, 160000], 20, [1.0, 2.0, 3.0, 4.0]),
 ]
 
 
-def test(input1, input2, expected_output):
+def test(data, base, expected_output):
     try:
         print("---------------------------------")
         print(f"Inputs:")
-        print(f" * num_followers: {input1}")
-        print(f" * average_engagement_percentage: {input2}")
+        print(f" * data: {data}")
+        print(f" * base: {base}")
         print(f"Expecting: {expected_output}")
-        result = round(get_influencer_score(input1, input2))
-        print(f"Actual: {result}")
-        if result == expected_output:
+        scaled_data = log_scale(data, base)
+        for i in range(0, len(scaled_data)):
+            scaled_data[i] = round(scaled_data[i], 2)
+        print(f"Actual: {scaled_data}")
+        if scaled_data == expected_output:
             print("Pass")
             return True
         print("Fail")
@@ -56,4 +62,5 @@ if "__RUN__" in globals():
     test_cases = run_cases
 
 main()
+
 

@@ -1,4 +1,4 @@
-from main import *
+from dsa_math import *
 
 run_cases = [
     (200, 0.5, 1, 100),

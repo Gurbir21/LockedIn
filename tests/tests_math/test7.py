@@ -1,26 +1,23 @@
-from main import *
+from dsa_math import *
 
-run_cases = [
-    ([7, 4, 3, 100, 2343243, 343434, 1, 2, 32], 1),
-    ([12, 12, 12], 12),
-    ([10, 200, 3000, 5000, 4], 4),
-]
+run_cases = [(2, 2), (3, 6), (5, 120)]
 
 submit_cases = run_cases + [
-    ([1], 1),
-    ([1, 2, 3, 4, 5], 1),
-    ([5, 4, 3, 2, 1], 1),
-    ([100, 200, 300, 400, 500], 100),
-    ([500, 400, 300, 200, 100], 100),
-    ([], None),
+    (1, 1),
+    (6, 720),
+    (7, 5040),
+    (8, 40320),
+    (9, 362880),
+    (11, 39916800),
 ]
 
 
 def test(input1, expected_output):
     print("---------------------------------")
-    print(f"Inputs: {input1}")
+    print(f"Inputs:")
+    print(f" * num_posts: {input1}")
     print(f"Expecting: {expected_output}")
-    result = find_minimum(input1)
+    result = num_possible_orders(input1)
     print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")
