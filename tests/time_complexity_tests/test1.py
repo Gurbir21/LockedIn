@@ -1,4 +1,4 @@
-from main import *
+from dsa_time_complexity import *
 
 run_cases = [([7, 4, 3, 100, 2343243, 343434, 1, 2, 32], 2343243), ([12, 12, 12], 12)]
 
