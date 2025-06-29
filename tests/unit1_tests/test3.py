@@ -1,24 +1,30 @@
 from dsa_math import *
 
-run_cases = [(40000, 0.3, 5), (43000, 0.1, 2), (100000, 0.6, 10)]
+
+run_cases = [
+    ([1], 1),
+    ([1, 2, 3, 4, 5, 6, 7], 4),
+    ([12, 12, 12], 12),
+    ([], None),
+]
 
 submit_cases = run_cases + [
-    (1, 1, 0),
-    (200, 0.8, 6),
-    (300000, 0.5, 9),
-    (500000, 0.2, 4),
-    (750000, 0.7, 14),
+    ([0], 0),
+    ([100, 200, 300, 400, 500], 300),
+    ([5, 10, 200, 3000, 5000], 1643),
+    ([12_345, 618_222, 58_832_221, 2_180_831_475, 8_663_863_102], 2_180_831_473),
 ]
 
 
-def test(input1, input2, expected_output):
+def test(input1, expected_output):
     try:
         print("---------------------------------")
         print(f"Inputs:")
-        print(f" * num_followers: {input1}")
-        print(f" * average_engagement_percentage: {input2}")
+        print(f" * nums: {input1}")
         print(f"Expecting: {expected_output}")
-        result = round(get_influencer_score(input1, input2))
+        result = average_followers(input1)
+        if expected_output is not None:
+            result = int(result)
         print(f"Actual: {result}")
         if result == expected_output:
             print("Pass")
