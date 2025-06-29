@@ -1,38 +1,38 @@
-from dsa_math import *
+from sortingAlgos import *
+import time
 
-run_cases = [
-    ([1], 1),
-    ([1, 2, 3, 4, 5, 6, 7], 4),
-    ([12, 12, 12], 12),
-    ([], None),
-]
+run_cases = [([3, 2, 1], [1, 2, 3]), ([5, 4, 3, 2, 1], [1, 2, 3, 4, 5])]
 
 submit_cases = run_cases + [
-    ([0], 0),
-    ([100, 200, 300, 400, 500], 300),
-    ([5, 10, 200, 3000, 5000], 1643),
-    ([12_345, 618_222, 58_832_221, 2_180_831_475, 8_663_863_102], 2_180_831_473),
+    ([], []),
+    ([7], [7]),
+    ([4, -7, 1, 0, 5], [-7, 0, 1, 4, 5]),
+    ([9, 8, 7, 6, 5, 4, 3, 2, 1, 0], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
+    ([1, 1, 1, 1, 1], [1, 1, 1, 1, 1]),
 ]
 
 
 def test(input1, expected_output):
-    try:
-        print("---------------------------------")
-        print(f"Inputs:")
-        print(f" * nums: {input1}")
-        print(f"Expecting: {expected_output}")
-        result = average_followers(input1)
-        if expected_output is not None:
-            result = int(result)
-        print(f"Actual: {result}")
+    print("---------------------------------")
+    print(f"Input: {input1}")
+    print(f"Expecting: {expected_output}")
+    start = time.time()
+    result = merge_sort(input1)
+    end = time.time()
+    timeout = 1.00
+    if (end - start) < timeout:
+        print(f"test completed in less than {timeout * 1000} milliseconds!")
         if result == expected_output:
+            print(f"Actual: {result}")
             print("Pass")
             return True
+        print(f"Actual: {result}")
         print("Fail")
         return False
-    except Exception as e:
+    else:
+        print(f"test took longer than {timeout * 1000} milliseconds!")
+        print(f"Actual: {result}")
         print("Fail")
-        print(e)
         return False
 
 

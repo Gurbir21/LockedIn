@@ -2,26 +2,29 @@ from dsa_math import *
 
 
 run_cases = [
-    ([7, 4, 3, 100, 2343243, 343434, 1, 2, 32], 1),
-    ([12, 12, 12], 12),
-    ([10, 200, 3000, 5000, 4], 4),
+    (10, "fitness", 1, 40),
+    (10, "fitness", 2, 160),
+    (12, "cosmetic", 4, 972),
 ]
 
 submit_cases = run_cases + [
-    ([1], 1),
-    ([1, 2, 3, 4, 5], 1),
-    ([5, 4, 3, 2, 1], 1),
-    ([100, 200, 300, 400, 500], 100),
-    ([500, 400, 300, 200, 100], 100),
-    ([], None),
+    (15, "business", 4, 240),
+    (10, "fitness", 5, 10240),
+    (10, "fitness", 6, 40960),
+    (10, "fitness", 7, 163840),
+    (10, "fitness", 8, 655360),
+    (10, "tech", 9, 5120),
 ]
 
 
-def test(input1, expected_output):
+def test(input1, input2, input3, expected_output):
     print("---------------------------------")
-    print(f"Inputs: {input1}")
+    print(f"Inputs:")
+    print(f" * Follower count: {input1}")
+    print(f" * Influencer type: {input2}")
+    print(f" * Number of months: {input3}")
     print(f"Expecting: {expected_output}")
-    result = find_minimum(input1)
+    result = get_follower_prediction(input1, input2, input3)
     print(f"Actual: {result}")
     if result == expected_output:
         print("Pass")

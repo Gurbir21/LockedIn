@@ -1,25 +1,48 @@
-from dsa_math import *
+from sortingAlgos import *
 
-run_cases = [(2, 2), (3, 6), (5, 120)]
+run_cases = [
+    ([1, 2], [[1, 2], [2], [1], []]),
+    ([1, 2, 3], [[1, 2, 3], [2, 3], [1, 3], [3], [1, 2], [2], [1], []]),
+]
 
 submit_cases = run_cases + [
-    (1, 1),
-    (6, 720),
-    (7, 5040),
-    (8, 40320),
-    (9, 362880),
-    (11, 39916800),
+    ([], [[]]),
+    ([1], [[1], []]),
+    (
+        [1, 2, 3, 4],
+        [
+            [1, 2, 3, 4],
+            [2, 3, 4],
+            [1, 3, 4],
+            [3, 4],
+            [1, 2, 4],
+            [2, 4],
+            [1, 4],
+            [4],
+            [1, 2, 3],
+            [2, 3],
+            [1, 3],
+            [3],
+            [1, 2],
+            [2],
+            [1],
+            [],
+        ],
+    ),
 ]
 
 
 def test(input1, expected_output):
     print("---------------------------------")
     print(f"Inputs:")
-    print(f" * num_posts: {input1}")
+    for i in input1:
+        print(f" * {i}")
     print(f"Expecting: {expected_output}")
-    result = num_possible_orders(input1)
+    result = power_set(input1)
     print(f"Actual: {result}")
-    if result == expected_output:
+    sorted_result = sorted([sorted(inner) for inner in result])
+    sorted_expected_output = sorted([sorted(inner) for inner in expected_output])
+    if sorted_result == sorted_expected_output:
         print("Pass")
         return True
     print("Fail")

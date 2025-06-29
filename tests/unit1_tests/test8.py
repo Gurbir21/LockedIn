@@ -1,5 +1,6 @@
 from dsa_math import *
 
+
 run_cases = [
     (200, 0.5, 1, 100),
     (200, 0.5, 2, 50),
